@@ -12967,7 +12967,11 @@ Look at the graph at the bottom left from the cell above(the visualization creat
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>Logistic regression is a very simple algorithm. We use the data we have, to make a model of what a person who makes over 50k looks like ( this is called training ). Once we have a trained model, we then feed new information to that model. The logistic regression model will compare the new data to the model and return a value between 0 and 1. The closer we are to 1, the more confident we can be that the person does make over 50k. If the number returns over .5, we can be reasonably confident that we have found a candidate.</p>
+<p>Considering Logistic Regression to be the best fit for our problem, let us try to understand what Regression is and then let us try to explain what Logistic Regression is (In terms of Statistics/Machine Learning). Regression is, in the simplest terms understanding the relationship between the input and the output variables. Linear Regression is a very simple form of regression, linear regression establishes a linear relationship between the input and output variables.
+Logistic regression is basically a linear regression model which explains the relationship between one dependent binary variable and one or more nominal / ordinal / interval / ratio-level independent variables. The only difference is that the output for linear regression is a number which has a real meaning(a label) while, the output of a logistic regression is a number that represents the probability of the event / label happening (example, the probability of people clicking an ad online, the probability of death in titanic disaster, etc.). 
+In our case predicting the probability of an individual making more money than $50,000. The intuition behind logistic regression is to transform the output of a linear regression to a range of (0,1) in which the probability lies. So, if for a person we are trying to find if he likes apple or mango, linear regression will produce an output like A or B (where, A: person likes Apple, B: person likes Mango) while logistic regression will output probabilities for both the A and B. So, if Probability(A) &gt; Probability(B) then the person likes Apple, else Mango).</p>
+<p>Now that we understood what Logistic regression is and what it tries to achieve / produce as output, let us try to understand how our logistic Regression Model works. Our objective is to classify a person as earning more than 50k or earning less than 50k. For our task, we have data which has certain features such as Age, Education Level, Hours per Week, Capital Loss, Capital Gain. With, basic intuition we could say that a person with higher education who works more hours per week would earn more. And someone with same education working same hours, but younger will earn less because he/she has less work experience. Our model also works the same way, but with huge no of features and huge population of data. It analyzes all the features and figures our relationship between the features. It finds out which features greatly impact a person’s earning and which don't. When the model is done with figuring out the training data, it defines a boundary. This process is called training the Model. After training we are ready to predict whether a person earns &gt; 50 k or not. In this process, the model will input the data features to the already trained model and output probabilities belonging to each group. The model associates / allocates the person to belong to the class with higher probability (i.e. &gt; 50 K or &lt; 50 K in this case).</p>
+<p><strong> NOTE :- </strong> Probability of an event is the likelihood/chance of occurence of it and probability always lies in between 0 and 1.</p>
 
 </div>
 </div>
@@ -13110,6 +13114,7 @@ Final F-score on the testing data: 0.6842
 <h4 id="Results:">Results:<a class="anchor-link" href="#Results:">&#182;</a></h4><table>
 <thead><tr>
 <th style="text-align:center">Metric</th>
+<th style="text-align:center">Naive / Benchmark Model</th>
 <th style="text-align:center">Unoptimized Model</th>
 <th style="text-align:center">Optimized Model</th>
 </tr>
@@ -13117,11 +13122,13 @@ Final F-score on the testing data: 0.6842
 <tbody>
 <tr>
 <td style="text-align:center">Accuracy Score</td>
+<td style="text-align:center">0.2478</td>
 <td style="text-align:center">0.8419</td>
 <td style="text-align:center">0.8420</td>
 </tr>
 <tr>
 <td style="text-align:center">F-score</td>
+<td style="text-align:center">0.2917</td>
 <td style="text-align:center">0.6832</td>
 <td style="text-align:center">0.6842</td>
 </tr>
@@ -13137,6 +13144,7 @@ Final F-score on the testing data: 0.6842
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <p>There doesn't seem to be any large improvement over the unoptimized model. This could be for a variety of reasons, including that the sparsity of the data doesn't matter all that much.</p>
+<p>But, both the optimized and unoptimized models perform way better than the naive / benchmark model we created.</p>
 
 </div>
 </div>
@@ -13274,6 +13282,7 @@ Final F-score on the testing data: 0.6842
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <p>Well, most of my assumptions turned to be correct, but I am surprised to see hours-per-week instead of workclass. I am not very surprised to see that capital-loss contributed significantly to someone making more money.</p>
+<p>I think hours-per-week makes more sense over workclass because irrespective of any workclass (maybe, atleast for this data), hardworkers are usually always paid with better benefits (hard work always pays off). Most importantly, hours-per-week showcase the amount of effort put in by a person / employee which end up increasing the productivity thereby generating better revenue to the firm as well as employee.</p>
 
 </div>
 </div>
